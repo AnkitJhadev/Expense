@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+            background-color: blanchedalmond;
+        }
+
+        #expense-form {
+            display: flex;
+            flex-direction: column;
+            max-width: 300px;
+            margin: auto;
+        }
+
+        input,
+        select,
+        button {
+            margin: 5px;
+            padding: 10px;
+        }
+
+        #expenses-list {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Expense Tracker</h1>
+
+    <form id="expense-form">
+        <label for="amount">Choose Expense:</label>
+        <input type="number" id="amount" placeholder="Enter amount" required>
+
+        <label for="category">Choose Category:</label>
+        <select id="category" required>
+            <option value="food">Food</option>
+            <option value="movies">Movies</option>
+            <option value="shopping">Shopping</option>
+                        <option value="shopping">Donation</option>
+
+        </select>
+
+        <button type="button" onclick="addExpense()">Submit</button>
+    </form>
+
+    <div id="expenses-list">
+        <h2>Expenses</h2>
+        <ul id="expense-items"></ul>
+    </div>
+
+    <script>
+        function addExpense() {
+            const amount = document.getElementById('amount').value;
+            const category = document.getElementById('category').value;
+
+            if (amount && category) {
+                const expenseList = document.getElementById('expense-items');
+                const newExpenseItem = document.createElement('li');
+                newExpenseItem.textContent = `Expense: ${amount} | Category: ${category}`;
+                expenseList.appendChild(newExpenseItem);
+
+                // You can add more logic here, such as updating a total amount or saving to a database.
+            } else {
+                alert('Please enter both amount and category.');
+            }
+        }
+    </script>
+</body>
+
+</html>
